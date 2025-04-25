@@ -4,6 +4,7 @@
 .main-layout {
     display: grid;
     grid-template-columns: .5fr 4fr .5fr 4fr .5fr;
+    row-gap: 50px;
 }
 
 
@@ -35,6 +36,10 @@
 
 .controller-container {
     grid-column: 4;
+}
+
+canvas {
+    background-color: black;
 }
 
 
