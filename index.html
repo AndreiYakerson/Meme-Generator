@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,33 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
+<body class="main-layout">
 
     <header class="main-header">
-        <h1>Meme Generator</h1>
+        <div class="main-header-content main-layout">
+            <h1>MG</h1>
+            <nav class="main-nav-container">
+                <a href="#">Gallery</a>
+                <a href="#">Generator</a>
+            </nav>
+        </div>
     </header>
 
-    <section class="gallery-section"></section>
-    <section class="generator-section"></section>
+    <main class="main-content">
 
+        <section class="generator-section main-layout">
+            <div class="canvas-container">
+                <canvas width="400" height="400"></canvas>
+            </div>
+
+            <div class="controller-container">
+                
+            </div>
+        </section>
+        
+        <section class="gallery-section"></section>
+        
+    </main>
 
 
 

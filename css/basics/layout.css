@@ -1,0 +1,25 @@
+
+
+/* MAIN LAYOUT */
+.main-layout {
+    display: grid;
+    grid-template-columns: .5fr 4fr .5fr 4fr .5fr;
+}
+
+
+/*MAIN HEADER LAYOUT */
+.main-header {
+    grid-column: 1/-1;
+}
+
+.main-header-content>:first-child {
+    grid-column: 2;
+}
+
+.main-nav-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center center;
+    grid-column: 4;
+}
+
