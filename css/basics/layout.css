@@ -23,3 +23,39 @@
     grid-column: 4;
 }
 
+/* MAIN CONTENT LAYOUT */
+
+.main-content {
+    grid-column: 1/-1;
+}
+
+.canvas-container {
+    grid-column: 2;
+}
+
+.controller-container {
+    grid-column: 4;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
