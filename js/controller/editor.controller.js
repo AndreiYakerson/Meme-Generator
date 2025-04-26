@@ -1,7 +1,8 @@
 'use strict'
 
-let gElCanvas
-let gCtx
+
+
+
 
 function onInit() {
     gElCanvas = document.querySelector('canvas')
