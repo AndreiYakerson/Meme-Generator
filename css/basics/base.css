@@ -10,4 +10,5 @@ html {
 
 body {
     margin: 0;
+    background-color: var(--clr-brand-secondary);
 }
