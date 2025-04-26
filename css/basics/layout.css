@@ -71,8 +71,18 @@
     grid-template-columns: repeat(2,1fr);
 }
 
+/* GALLERY SECTION LAYOUT */
 
+.gallery-section {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    column-gap: 5px;
+    row-gap: 5px;
+}
 
+.img-gallery {
+    width: 100%;
+}
 
 
 
