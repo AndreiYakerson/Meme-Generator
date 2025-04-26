@@ -16,5 +16,8 @@
 .controller-container select {
     border-radius: 2em;
     
+.text-input {
+    text-align: center;
+    font-size: 1.5rem;
 }
 
