@@ -1,7 +1,8 @@
 'use strict'
 
-
-
+let gElCanvas
+let gCtx
+let gSelectedText = ''
 
 var gImgs = [
     { id: 1, src: 'img/meme-imgs (square)/1.jpg', keywords: ['funny', 'tramp', 'president'] },
