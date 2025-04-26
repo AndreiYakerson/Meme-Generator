@@ -21,3 +21,8 @@ function renderGallerySection() {
     })
 
 }
+
+function onGalleryImgClick(el) {
+    gSelectedImgSrc = el.src
+    renderEditorSection(gSelectedImgSrc)
+}
