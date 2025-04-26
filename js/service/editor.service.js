@@ -24,17 +24,7 @@ var gImgs = [
     { id: 17, src: 'img/meme-imgs (square)/18.jpg', keywords: ['funny', 'putin','president'] },
 ]
 
-// var gMeme = {
-//     selectedImgId: 1,
-//     selectedLineIdx: 0,
-//     lines: [
-//         {
-//             txt: 'I sometimes eat Falafel',
-//             size: 20,
-//             color: 'red'
-//         }
-//     ]
-// }
+let gSelectedImgSrc = gImgs[3].src
 // var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 function changeTextSizeUp(amount) {
     if (gMeme.lines[0].size === 100) return
