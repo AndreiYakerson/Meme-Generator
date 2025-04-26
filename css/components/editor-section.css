@@ -1,0 +1,20 @@
+
+.editor-section {
+    border: solid;
+    padding-block: 30px;
+    background-color: var(--clr-brand-basic);
+}
+
+.controller-container {
+    border: solid;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.controller-container button,
+.controller-container input,
+.controller-container select {
+    border-radius: 2em;
+    
+}
+
