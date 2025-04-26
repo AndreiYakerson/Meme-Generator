@@ -29,6 +29,21 @@ function renderImageOnCanvas(imgSrc) {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         drawText(gSelectedText, gElCanvas.width / 2, 100)
     }
+
+}
+
+function drawText(text, x, y) {
+
+    gCtx.font = `${gMeme.lines[0].size}px Arial`
+    gCtx.strokeStyle = gMeme.lines[0].strokeStyle
+    gCtx.lineWidth = 2
+    gCtx.fillStyle = gMeme.lines[0].color
+    gCtx.textBaseLine = 'middle'
+    gCtx.textAlign = 'center'
+    gCtx.fillText(text, x, y)
+    gCtx.strokeText(text, x, y)
+}
+
 function onChangeText(text) {
     gSelectedText = text
     renderImageOnCanvas(gSelectedImgSrc)
