@@ -9,6 +9,8 @@ function onInit() {
     
     
     resizeCanvas()
+    renderImageOnCanvas(gImgs[1].src)
+    
 }
 
 function resizeCanvas() {
