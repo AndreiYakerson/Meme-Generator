@@ -29,6 +29,11 @@ function renderImageOnCanvas(imgSrc) {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         drawText(gSelectedText, gElCanvas.width / 2, 100)
     }
+function onChangeText(text) {
+    gSelectedText = text
+    renderImageOnCanvas(gSelectedImgSrc)
+}
+
 function onChangeStrokeStyle(color) {
     changeStrokeStyle(color)
     renderImageOnCanvas(gSelectedImgSrc)
