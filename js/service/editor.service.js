@@ -46,3 +46,11 @@ function changeTextSizeDown(amount) {
     if (gMeme.lines[0].size === 30) return
     gMeme.lines[0].size -= amount
 }
+
+function changeStrokeStyle(color) {
+    gMeme.lines[0].strokeStyle = color
+}
+
+function changeTextColor(color) {
+    gMeme.lines[0].color = color
+}

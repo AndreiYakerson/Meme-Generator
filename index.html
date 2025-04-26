@@ -41,6 +41,14 @@
                 <div class="font-controller btn-column-gap">
                     <button onclick="onTextSizeUp()">A+</button>
                     <button onclick="onTextSizeDown()">A-</button>
+                    <button>
+                        <label for="text-color">Text color</label>
+                        <input id="strokeStyle" type="color" onchange="onChangeTextColor(this.value)">
+                    </button>
+                    <button>
+                        <label for="stroke-style">Stroke color</label>
+                        <input id="stroke-style" type="color" onchange="onChangeStrokeStyle(this.value)">
+                    </button>
                     <button>e</button>
                     <select class="font-fam-input" name="font-family" id="font-family">
                         <option value=""></option>

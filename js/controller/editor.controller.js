@@ -26,6 +26,15 @@ function renderImageOnCanvas(imgSrc) {
     
     img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
+function onChangeStrokeStyle(color) {
+    changeStrokeStyle(color)
+    renderImageOnCanvas(gSelectedImgSrc)
+}
+
+function onChangeTextColor(color) {
+    changeTextColor(color)
+    renderImageOnCanvas(gSelectedImgSrc)
+}
 
 function onTextSizeUp() {
     changeTextSizeUp(5)
