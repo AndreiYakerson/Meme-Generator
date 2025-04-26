@@ -1,7 +1,6 @@
 'use strict'
 
-let gElCanvas
-let gCtx
+
 
 
 var gImgs = [
