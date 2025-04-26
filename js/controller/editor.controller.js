@@ -26,6 +26,9 @@ function renderImageOnCanvas(imgSrc) {
     
     img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+        drawText(gSelectedText, gElCanvas.width / 2, 100)
+    }
 function onChangeStrokeStyle(color) {
     changeStrokeStyle(color)
     renderImageOnCanvas(gSelectedImgSrc)
