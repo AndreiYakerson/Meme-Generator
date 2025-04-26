@@ -26,8 +26,16 @@ function renderImageOnCanvas(imgSrc) {
     
     img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
-        gCtx.drawImage(img,0,0,gElCanvas.width,gElCanvas.height)
-    }
+
+function onTextSizeUp() {
+    changeTextSizeUp(5)
+    renderImageOnCanvas(gSelectedImgSrc)
+}
+
+function onTextSizeDown() {
+    changeTextSizeDown(5)
+    renderImageOnCanvas(gSelectedImgSrc)
+}
 
 }
 
