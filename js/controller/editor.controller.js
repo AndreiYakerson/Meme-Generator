@@ -85,23 +85,67 @@ function onEditorClick() {
 
 // RENDER SECTIONS
 
-// function renderEditorSection() {
-//     const elMainContent = document.querySelector('.main-content')
+function renderEditorSection(selectedImg) {
+    let elEditorSection = document.querySelector('.editor-section')
+    let elGallerySection = document.querySelector('.gallery-section')
 
-//     elMainContent.innerHTML = `
-//     <section class="editor-section main-layout">
-//             <div class="canvas-container">
-//                 <canvas class="canvas" width="400" height="400"></canvas>
-//             </div>
+    elGallerySection.innerHTML = ''
 
-//             <div class="controller-container">
+    elEditorSection.innerHTML = `
+            <div class="canvas-container">
+                <canvas class="canvas" width="400" height="400"></canvas>
+            </div>
 
-//             </div>
-//         </section>
-//     `
-// }
+            <div class="controller-container">
+                <input class="text-input" type="text" oninput="onChangeText(this.value)">
 
-function renderGallerySection() {
+                <div class="text-controller btn-column-gap">
+                    <button>a</button>
+                    <button>b</button>
+                    <button>c</button>
+                    <button>d</button>
+                    <button>e</button>
+                </div>
+                
+                <div class="font-controller btn-column-gap">
+                    <button onclick="onTextSizeUp()">A+</button>
+                    <button onclick="onTextSizeDown()">A-</button>
+                    <button>
+                        <label for="text-color">Text color</label>
+                        <input id="strokeStyle" type="color" onchange="onChangeTextColor(this.value)">
+                    </button>
+                    <button>
+                        <label for="stroke-style">Stroke color</label>
+                        <input id="stroke-style" type="color" onchange="onChangeStrokeStyle(this.value)">
+                    </button>
+                    <button>e</button>
+                    <select class="font-fam-input" name="font-family" id="font-family">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                    <button>f</button>
+                    <button>g</button>
+                </div>
 
+                <div class="sticker-controller btn-column-gap">
+                    <button>😁</button>
+                    <button>😇</button>
+                    <button>😍</button>
+                    <button>🥸</button>
+                </div>
+
+                <div class="download-controller btn-column-gap">
+                    <button>Share</button>
+                    <button>Download</button>
+                </div>
+            </div>
+    `
+    gElCanvas = document.querySelector('.canvas')
+    gCtx = gElCanvas.getContext('2d')
+    resizeCanvas()
+    renderImageOnCanvas(selectedImg)
 }
+
+
 
