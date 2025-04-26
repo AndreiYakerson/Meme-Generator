@@ -1,13 +1,13 @@
 
 /* Setup */
-@import url('setup/vars.css');
+@import url('/css/setup/vars.css');
 
 
 
 /* BASICS */
 @import url('/css/basics/base.css');
-@import url('basics/helpers.css');
-@import url('basics/layout.css');
+@import url('/css/basics/helpers.css');
+@import url('/css/basics/layout.css');
 
 /* COMPONENTS */
 @import url('/css/components/main-header.css');
