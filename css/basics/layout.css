@@ -34,10 +34,42 @@
     grid-column: 2;
 }
 
+
+
+/* EDITOR CONTROLLER LAYOUT */
+
 .controller-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
+    row-gap: 20px;
     grid-column: 4;
 }
 
+.text-controller {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
+
+.font-controller {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(2,1fr);
+    row-gap: 5px;
+}
+
+.font-fam-input {
+    grid-column: 1/4;
+}
+
+.sticker-controller {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.download-controller {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
 
 
 
