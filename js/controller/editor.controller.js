@@ -81,6 +81,7 @@ function onGalleryClick() {
 
 function onEditorClick() {
     renderEditorSection()
+    renderImageOnCanvas(gSelectedImgSrc)
 }
 
 // RENDER SECTIONS
