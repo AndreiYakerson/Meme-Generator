@@ -4,27 +4,30 @@
 
 
 
-function onInit() {
-    gElCanvas = document.querySelector('canvas')
+function onInit(ev) {
+
+    // renderEditorSection()
+
+    gElCanvas = document.querySelector('.canvas')
     gCtx = gElCanvas.getContext('2d')
-    
-    
     resizeCanvas()
-    renderImageOnCanvas(gImgs[1].src)
-    
+
 }
+
+
+// CANVAS FUNCTIONS
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.clientWidth
-    renderImageOnCanvas(gImgs[1].src)
+    renderImageOnCanvas(gSelectedImgSrc)
 }
 
 
 function renderImageOnCanvas(imgSrc) {
     const img = new Image
     img.src = imgSrc
-    
+
     img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
@@ -60,6 +63,8 @@ function onChangeTextColor(color) {
     renderImageOnCanvas(gSelectedImgSrc)
 }
 
+// CONTROLLER BUTTONS
+
 function onTextSizeUp() {
     changeTextSizeUp(5)
     renderImageOnCanvas(gSelectedImgSrc)
@@ -69,6 +74,38 @@ function onTextSizeDown() {
     changeTextSizeDown(5)
     renderImageOnCanvas(gSelectedImgSrc)
 }
+
+
+
+// NAVIGATION CLICKS
+
+function onGalleryClick() {
+    renderGallerySection()
+}
+
+function onEditorClick() {
+    renderEditorSection()
+}
+
+// RENDER SECTIONS
+
+// function renderEditorSection() {
+//     const elMainContent = document.querySelector('.main-content')
+
+//     elMainContent.innerHTML = `
+//     <section class="editor-section main-layout">
+//             <div class="canvas-container">
+//                 <canvas class="canvas" width="400" height="400"></canvas>
+//             </div>
+
+//             <div class="controller-container">
+
+//             </div>
+//         </section>
+//     `
+// }
+
+function renderGallerySection() {
 
 }
 
