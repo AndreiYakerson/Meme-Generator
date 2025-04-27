@@ -6,7 +6,7 @@
 
 function onInit(ev) {
     // renderGallerySection()
-    renderEditorSection(gSelectedImgSrc)
+    renderEditorSection(gMeme.selectedImg)
 
 }
 
@@ -16,7 +16,7 @@ function onInit(ev) {
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.clientWidth
-    renderImageOnCanvas(gSelectedImgSrc)
+    renderImageOnCanvas(gMeme.selectedImg)
 }
 
 
@@ -27,61 +27,72 @@ function renderImageOnCanvas(imgSrc) {
     img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        drawText(gSelectedText, gElCanvas.width / 2, 100)
+        drawRect(10,10)
+        drawText(gMeme.lines[gMeme.selectedLineIdx].txt, gElCanvas.width / 2, gMeme.lines[gMeme.selectedLineIdx].textPosY)
     }
 
 }
 
 function drawText(text, x, y) {
-
-    gCtx.font = `${gMeme.lines[0].size}px Arial`
-    gCtx.strokeStyle = gMeme.lines[0].strokeStyle
+    gCtx.font = `${gMeme.lines[gMeme.selectedLineIdx].size}px ${gMeme.lines[gMeme.selectedLineIdx].fontFamily}`
+    gCtx.strokeStyle = gMeme.lines[gMeme.selectedLineIdx].strokeStyle
     gCtx.lineWidth = 2
-    gCtx.fillStyle = gMeme.lines[0].color
+    gCtx.fillStyle = gMeme.lines[gMeme.selectedLineIdx].color
     gCtx.textBaseLine = 'middle'
     gCtx.textAlign = 'center'
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
 }
 
+function drawRect(x, y) {
+    gCtx.strokeStyle = 'black'
+    gCtx.strokeRect(x, y, gElCanvas.width - 20, 150)
+    gCtx.fillStyle = 'rgba(194, 201, 201, 0.58)';
+    gCtx.fillRect(x, y, gElCanvas.width - 20, 150)
+} 
+
+
+// CONTROLLER BUTTONS
+
 function onChangeText(text) {
-    gSelectedText = text
-    renderImageOnCanvas(gSelectedImgSrc)
+    changeLineText(text)
+    gMeme.lines[gMeme.selectedLineIdx].txt = text
+    renderImageOnCanvas(gMeme.selectedImg)
 }
 
 function onChangeStrokeStyle(color) {
     changeStrokeStyle(color)
-    renderImageOnCanvas(gSelectedImgSrc)
+    renderImageOnCanvas(gMeme.selectedImg)
 }
 
 function onChangeTextColor(color) {
     changeTextColor(color)
-    renderImageOnCanvas(gSelectedImgSrc)
+    renderImageOnCanvas(gMeme.selectedImg)
 }
 
-// CONTROLLER BUTTONS
 
 function onTextSizeUp() {
     changeTextSizeUp(5)
-    renderImageOnCanvas(gSelectedImgSrc)
+    renderImageOnCanvas(gMeme.selectedImg)
 }
 
 function onTextSizeDown() {
     changeTextSizeDown(5)
-    renderImageOnCanvas(gSelectedImgSrc)
+    renderImageOnCanvas(gMeme.selectedImg)
 }
 
 
 
 // NAVIGATION CLICKS
 
-function onGalleryClick() {
-    renderGallerySection()
-}
-
 function onEditorClick() {
+    if (gPage === 'editor') return
+
+    gPage = 'editor'
+
+    toggleUnderLineClass()
     renderEditorSection()
-    renderImageOnCanvas(gSelectedImgSrc)
+    renderImageOnCanvas(gMeme.selectedImg)
 }
 
 // RENDER SECTIONS
@@ -92,18 +103,20 @@ function renderEditorSection(selectedImg) {
 
     elGallerySection.innerHTML = ''
 
+
+
     elEditorSection.innerHTML = `
             <div class="canvas-container">
                 <canvas class="canvas" width="400" height="400"></canvas>
             </div>
 
             <div class="controller-container">
-                <input class="text-input" type="text" oninput="onChangeText(this.value)">
+                <input class="text-input" type="text" oninput="onChangeText(this.value)" placeholder="Add text">
 
                 <div class="text-controller btn-column-gap">
-                    <button>a</button>
-                    <button>b</button>
-                    <button>c</button>
+                    <button onclick="onChangeLine()">↑↓</button>
+                    <button>+</button>
+                    <button>→</button>
                     <button>d</button>
                     <button>e</button>
                 </div>
@@ -111,22 +124,22 @@ function renderEditorSection(selectedImg) {
                 <div class="font-controller btn-column-gap">
                     <button onclick="onTextSizeUp()">A+</button>
                     <button onclick="onTextSizeDown()">A-</button>
-                    <button>
-                        <label for="text-color">Text color</label>
-                        <input id="strokeStyle" type="color" onchange="onChangeTextColor(this.value)">
-                    </button>
-                    <button>
-                        <label for="stroke-style">Stroke color</label>
-                        <input id="stroke-style" type="color" onchange="onChangeStrokeStyle(this.value)">
-                    </button>
-                    <button>e</button>
-                    <select class="font-fam-input" name="font-family" id="font-family">
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
+                    <button>c</button>
                     <button>f</button>
                     <button>g</button>
+                    <select class="font-fam-input text-input" onchange="onChangeFontFamily(this.value)" name="font-family" id="font-family">
+                    <option value="Arial">Arial</option>
+                    <option value="Times New Roman">Times</option>
+                    <option value="Impact" selected>Impact</option>
+                    </select>
+                    <button>
+                        <label for="text-color">🎨</label>
+                        <input class="text-color" id="text-color" type="color" onchange="onChangeTextColor(this.value)" hidden>
+                    </button>
+                    <button>
+                        <label class="stroke-style" for="stroke-style">🖍️</label>
+                        <input id="stroke-style" type="color" onchange="onChangeStrokeStyle(this.value)" hidden>
+                    </button>
                 </div>
 
                 <div class="sticker-controller btn-column-gap">
@@ -146,7 +159,45 @@ function renderEditorSection(selectedImg) {
     gCtx = gElCanvas.getContext('2d')
     resizeCanvas()
     renderImageOnCanvas(selectedImg)
+    renderInputText()
+    renderSelectedFontFamily()
 }
 
 
+function toggleUnderLineClass() {
+    const elGalleryLink = document.querySelector('.gallery-nav')
+    const elEditorLink = document.querySelector('.editor-nav')
+    elGalleryLink.classList.toggle('underLine')
+    elEditorLink.classList.toggle('underLine')
+}
+
+function onChangeFontFamily(font) {
+    changeFontFamily(font)
+    renderImageOnCanvas(gMeme.selectedImg)
+}
+
+function onChangeLine() {
+    changeSelectedLine()
+    renderInputText()
+}
+
+function renderInputText() {
+    const elTextInput = document.querySelector('.text-input')
+    elTextInput.value = getLineText()
+}
+
+function renderInputTextColor() {
+    const elColorInput = document.querySelector('.text-color')
+    elColorInput.value = getTextColor()
+}
+
+function renderInputTextStrokeStyle() {
+    const elStrokeInput = document.querySelector('.stroke-style')
+    elStrokeInput.value = getStrokeStyle()
+}
+
+function renderSelectedFontFamily() {
+    const elSelectFont = document.querySelector('.font-fam-input')
+    elSelectFont.value = getFontFamily()
+}
 

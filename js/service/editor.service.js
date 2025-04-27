@@ -27,15 +27,27 @@ var gImgs = [
 let gSelectedImgSrc = gImgs[3].src
 
 let gMeme = {
-    selectedImgId: 1,
+    selectedImg: gImgs[3].src,
     selectedLineIdx: 0,
 
     lines: [
         {
-            txt: gSelectedText,
+            txt: '',
             size: 50,
             strokeStyle: 'white',
-            color: 'black'
+            color: 'black',
+            fontFamily: 'Impact',
+            textPosY: 100,
+            borderPos: {}
+        },
+        {
+            txt: '',
+            size: 50,
+            strokeStyle: 'white',
+            color: 'black',
+            fontFamily: 'Impact',
+            textPosY: 400,
+            borderPos: {}
         }
     ]
 }
@@ -44,21 +56,19 @@ let gMeme = {
 
 
 function changeTextSizeUp(amount) {
-    if (gMeme.lines[0].size === 100) return
-    gMeme.lines[0].size += amount
-    console.log(gMeme.lines[0].size);
-    
+    if (gMeme.lines[gMeme.selectedLineIdx].size === 100) return
+    gMeme.lines[gMeme.selectedLineIdx].size += amount
 }
 
 function changeTextSizeDown(amount) {
-    if (gMeme.lines[0].size === 30) return
-    gMeme.lines[0].size -= amount
+    if (gMeme.lines[gMeme.selectedLineIdx].size === 30) return
+    gMeme.lines[gMeme.selectedLineIdx].size -= amount
 }
 
 function changeStrokeStyle(color) {
-    gMeme.lines[0].strokeStyle = color
+    gMeme.lines[gMeme.selectedLineIdx].strokeStyle = color
 }
 
 function changeTextColor(color) {
-    gMeme.lines[0].color = color
+    gMeme.lines[gMeme.selectedLineIdx].color = color
 }
