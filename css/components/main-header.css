@@ -8,3 +8,11 @@
     font-size: 2rem;
 }
 
+
+.main-nav-container a {
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: black;
+}
+
+
