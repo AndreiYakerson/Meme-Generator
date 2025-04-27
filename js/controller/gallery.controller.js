@@ -19,6 +19,7 @@ function renderGallerySection() {
     let elGallerySection = document.querySelector('.gallery-section')
 
     elEditorSection.innerHTML = ''
+    elGallerySection.innerHTML = ''
 
     
     gImgs.forEach((img,idx) => {
