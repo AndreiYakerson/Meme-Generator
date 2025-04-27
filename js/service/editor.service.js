@@ -76,3 +76,8 @@ function changeTextColor(color) {
 function changeFontFamily(font) {
     gMeme.lines[gMeme.selectedLineIdx].fontFamily = font
 }
+
+function getFontFamily() {
+    return gMeme.lines[gMeme.selectedLineIdx].fontFamily
+}
+
