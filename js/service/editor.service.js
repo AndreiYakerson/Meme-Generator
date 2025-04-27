@@ -72,3 +72,7 @@ function changeStrokeStyle(color) {
 function changeTextColor(color) {
     gMeme.lines[gMeme.selectedLineIdx].color = color
 }
+
+function changeFontFamily(font) {
+    gMeme.lines[gMeme.selectedLineIdx].fontFamily = font
+}
