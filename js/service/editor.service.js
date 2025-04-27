@@ -24,7 +24,7 @@ var gImgs = [
     { id: 17, src: 'img/meme-imgs (square)/18.jpg', keywords: ['funny', 'putin','president'] },
 ]
 
-let gSelectedImgSrc = gImgs[3].src
+
 
 let gMeme = {
     selectedImg: gImgs[3].src,
