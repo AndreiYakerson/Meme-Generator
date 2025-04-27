@@ -81,3 +81,7 @@ function getFontFamily() {
     return gMeme.lines[gMeme.selectedLineIdx].fontFamily
 }
 
+function changeLineText(text) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = text
+}
+
