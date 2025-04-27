@@ -89,3 +89,6 @@ function getLineText() {
     return gMeme.lines[gMeme.selectedLineIdx].txt
 }
 
+function getTextColor() {
+    return gMeme.lines[gMeme.selectedLineIdx].color
+}
