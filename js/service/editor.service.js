@@ -85,3 +85,7 @@ function changeLineText(text) {
     gMeme.lines[gMeme.selectedLineIdx].txt = text
 }
 
+function getLineText() {
+    return gMeme.lines[gMeme.selectedLineIdx].txt
+}
+
