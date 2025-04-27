@@ -2,7 +2,7 @@
 
 let gElCanvas
 let gCtx
-let gSelectedText = ''
+let gPage = 'editor'
 
 var gImgs = [
     { id: 1, src: 'img/meme-imgs (square)/1.jpg', keywords: ['funny', 'tramp', 'president'] },
