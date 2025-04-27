@@ -54,6 +54,10 @@ let gMeme = {
 
 // var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
+function changeSelectedLine() {
+    if (gMeme.selectedLineIdx === 1) gMeme.selectedLineIdx = 0
+    else gMeme.selectedLineIdx = 1
+}
 
 function changeTextSizeUp(amount) {
     if (gMeme.lines[gMeme.selectedLineIdx].size === 100) return
