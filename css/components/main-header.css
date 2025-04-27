@@ -3,3 +3,8 @@
     padding-block: 5px;
     background-color: var(--clr-brand-basic);
 }
+
+.logo {
+    font-size: 2rem;
+}
+
