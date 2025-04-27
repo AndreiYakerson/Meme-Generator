@@ -3,6 +3,13 @@
 
 
 function onGalleryClick() {
+
+    if (gPage === 'gallery') return
+    
+    gPage = 'gallery'
+
+
+    toggleUnderLineClass()
     renderGallerySection()
 }
 
@@ -23,6 +30,6 @@ function renderGallerySection() {
 }
 
 function onGalleryImgClick(el) {
-    gSelectedImgSrc = el.src
-    renderEditorSection(gSelectedImgSrc)
+    gPage = 'editor'
+    toggleUnderLineClass()
 }
