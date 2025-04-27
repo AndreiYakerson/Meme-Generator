@@ -32,4 +32,6 @@ function renderGallerySection() {
 function onGalleryImgClick(el) {
     gPage = 'editor'
     toggleUnderLineClass()
+    gMeme.selectedImg = el.src
+    renderEditorSection(gMeme.selectedImg)
 }
