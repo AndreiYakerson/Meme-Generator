@@ -92,3 +92,7 @@ function getLineText() {
 function getTextColor() {
     return gMeme.lines[gMeme.selectedLineIdx].color
 }
+
+function getStrokeStyle() {
+    return gMeme.lines[gMeme.selectedLineIdx].strokeStyle
+}
