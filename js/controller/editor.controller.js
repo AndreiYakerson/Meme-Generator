@@ -202,15 +202,7 @@ function toggleUnderLineClass() {
     elEditorLink.classList.toggle('underLine')
 }
 
-function onChangeFontFamily(font) {
-    changeFontFamily(font)
-    renderImageOnCanvas(gMeme.selectedImg)
-}
 
-function onChangeLine() {
-    changeSelectedLine()
-    renderInputText()
-}
 
 function renderInputText() {
     const elTextInput = document.querySelector('.text-input')
