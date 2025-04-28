@@ -27,8 +27,14 @@ function renderImageOnCanvas(imgSrc) {
     img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        drawRect(10,10)
-        drawText(gMeme.lines[gMeme.selectedLineIdx].txt, gElCanvas.width / 2, gMeme.lines[gMeme.selectedLineIdx].textPosY)
+
+        gMeme.lines[0].textPosY = 90
+        gMeme.lines[1].textPosY = gElCanvas.height - 60
+
+        gMeme.lines[0].borderPos = { x: 0, y: 20 }
+        gMeme.lines[1].borderPos = { x: 0, y: gElCanvas.height - 120 }
+
+
     }
 
 }
