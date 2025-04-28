@@ -1,9 +1,6 @@
 'use strict'
 
 
-
-
-
 function onInit(ev) {
     // renderGallerySection()
     renderEditorSection(gMeme.selectedImg)
@@ -69,7 +66,7 @@ function drawRect(x, y) {
     gCtx.strokeRect(x, y, gElCanvas.width, 100)
     gCtx.fillStyle = 'rgba(194, 201, 201, 0.58)';
     gCtx.fillRect(x, y, gElCanvas.width, 100)
-} 
+}
 
 
 // CONTROLLER BUTTONS
