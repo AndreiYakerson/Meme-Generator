@@ -35,15 +35,29 @@ function renderImageOnCanvas(imgSrc) {
         gMeme.lines[1].borderPos = { x: 0, y: gElCanvas.height - 120 }
 
 
+        drawRect(gMeme.lines[gMeme.selectedLineIdx].borderPos.x, gMeme.lines[gMeme.selectedLineIdx].borderPos.y)
+        drawText1(gMeme.lines[0].txt, gElCanvas.width / 2, gMeme.lines[0].textPosY)
+        drawText2(gMeme.lines[1].txt, gElCanvas.width / 2, gMeme.lines[1].textPosY)
     }
 
 }
 
-function drawText(text, x, y) {
-    gCtx.font = `${gMeme.lines[gMeme.selectedLineIdx].size}px ${gMeme.lines[gMeme.selectedLineIdx].fontFamily}`
-    gCtx.strokeStyle = gMeme.lines[gMeme.selectedLineIdx].strokeStyle
+function drawText1(text, x, y) {
+    gCtx.font = `${gMeme.lines[0].size}px ${gMeme.lines[0].fontFamily}`
+    gCtx.strokeStyle = gMeme.lines[0].strokeStyle
     gCtx.lineWidth = 2
-    gCtx.fillStyle = gMeme.lines[gMeme.selectedLineIdx].color
+    gCtx.fillStyle = gMeme.lines[0].color
+    gCtx.textBaseLine = 'middle'
+    gCtx.textAlign = 'center'
+    gCtx.fillText(text, x, y)
+    gCtx.strokeText(text, x, y)
+}
+
+function drawText2(text, x, y) {
+    gCtx.font = `${gMeme.lines[1].size}px ${gMeme.lines[1].fontFamily}`
+    gCtx.strokeStyle = gMeme.lines[1].strokeStyle
+    gCtx.lineWidth = 2
+    gCtx.fillStyle = gMeme.lines[1].color
     gCtx.textBaseLine = 'middle'
     gCtx.textAlign = 'center'
     gCtx.fillText(text, x, y)
