@@ -106,6 +106,11 @@ function onChangeFontFamily(font) {
     renderImageOnCanvas(gMeme.selectedImg)
 }
 
+function onChangeLine() {
+    changeSelectedLine()
+    renderInputText()
+    renderImageOnCanvas(gMeme.selectedImg)
+}
 
 
 
