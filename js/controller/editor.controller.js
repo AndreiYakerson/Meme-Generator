@@ -66,9 +66,9 @@ function drawText2(text, x, y) {
 
 function drawRect(x, y) {
     gCtx.strokeStyle = 'black'
-    gCtx.strokeRect(x, y, gElCanvas.width - 20, 150)
+    gCtx.strokeRect(x, y, gElCanvas.width, 100)
     gCtx.fillStyle = 'rgba(194, 201, 201, 0.58)';
-    gCtx.fillRect(x, y, gElCanvas.width - 20, 150)
+    gCtx.fillRect(x, y, gElCanvas.width, 100)
 } 
 
 
