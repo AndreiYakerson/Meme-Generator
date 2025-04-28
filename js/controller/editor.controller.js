@@ -101,6 +101,12 @@ function onTextSizeDown() {
     renderImageOnCanvas(gMeme.selectedImg)
 }
 
+function onChangeFontFamily(font) {
+    changeFontFamily(font)
+    renderImageOnCanvas(gMeme.selectedImg)
+}
+
+
 
 
 // NAVIGATION CLICKS
