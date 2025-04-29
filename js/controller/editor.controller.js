@@ -241,6 +241,10 @@ function renderSelectedFontFamily() {
     elSelectFont.value = getFontFamily()
 }
 
+function onDownloadClick(elLink) {
+    const dataUrl = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = dataUrl
+}
 
 function onDownloadIn() {
     renderImageOnCanvas(gMeme.selectedImg, true)
