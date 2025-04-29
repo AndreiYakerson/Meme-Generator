@@ -25,14 +25,14 @@ function renderImageOnCanvas(imgSrc) {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
-        gMeme.lines[0].textPosY = 90
-        gMeme.lines[1].textPosY = gElCanvas.height - 60
+        gMeme.lines[0].textPosY = gElCanvas.height / 100 * 20
+        gMeme.lines[1].textPosY = gElCanvas.height - (gElCanvas.height / 100 * 10)
 
-        gMeme.lines[0].borderPos = { x: 0, y: 20 }
-        gMeme.lines[1].borderPos = { x: 0, y: gElCanvas.height - 120 }
+        gMeme.lines[0].borderPos = { x: 0, y: gElCanvas.height / 100 * 20 - gMeme.lines[0].size }
+        gMeme.lines[1].borderPos = { x: 0, y: gElCanvas.height - (gElCanvas.height / 100 * 10) - gMeme.lines[1].size }
 
 
-        drawRect(gMeme.lines[gMeme.selectedLineIdx].borderPos.x, gMeme.lines[gMeme.selectedLineIdx].borderPos.y)
+        drawRect(gMeme.lines[gMeme.selectedLineIdx].borderPos.x, gMeme.lines[gMeme.selectedLineIdx].borderPos.y, gMeme.selectedLineIdx)
         drawText1(gMeme.lines[0].txt, gElCanvas.width / 2, gMeme.lines[0].textPosY)
         drawText2(gMeme.lines[1].txt, gElCanvas.width / 2, gMeme.lines[1].textPosY)
     }
@@ -61,11 +61,11 @@ function drawText2(text, x, y) {
     gCtx.strokeText(text, x, y)
 }
 
-function drawRect(x, y) {
+function drawRect(x, y, lineIdx) {
     gCtx.strokeStyle = 'black'
-    gCtx.strokeRect(x, y, gElCanvas.width, 100)
+    gCtx.strokeRect(x, y, gElCanvas.width, 15 + gMeme.lines[lineIdx].size)
     gCtx.fillStyle = 'rgba(255, 217, 0, 0.46)';
-    gCtx.fillRect(x, y, gElCanvas.width, 100)
+    gCtx.fillRect(x, y, gElCanvas.width, 15 + gMeme.lines[lineIdx].size)
 }
 
 
@@ -159,17 +159,17 @@ function renderEditorSection(selectedImg) {
                 <div class="text-controller btn-column-gap">
                     <button onclick="onChangeLine()">↑↓</button>
                     <button>+</button>
-                    <button onclick="onAlignTextLeft()">←</button>
-                    <button onclick="onAlignTextCenter()">↑</button>
-                    <button onclick="onAlignTextRight()">→</button>
+                    <button>c</button>
+                    <button>f</button>
+                    <button>g</button>
                 </div>
                 
                 <div class="font-controller btn-column-gap">
                     <button onclick="onTextSizeUp()">A+</button>
                     <button onclick="onTextSizeDown()">A-</button>
-                    <button>c</button>
-                    <button>f</button>
-                    <button>g</button>
+                    <button onclick="onAlignTextLeft()">←</button>
+                    <button onclick="onAlignTextCenter()">↑</button>
+                    <button onclick="onAlignTextRight()">→</button>
                     <select class="font-fam-input text-input" onchange="onChangeFontFamily(this.value)" name="font-family" id="font-family">
                     <option value="Arial">Arial</option>
                     <option value="Times New Roman">Times</option>
