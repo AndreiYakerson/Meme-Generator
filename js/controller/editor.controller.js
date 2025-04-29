@@ -17,7 +17,7 @@ function resizeCanvas() {
 }
 
 
-function renderImageOnCanvas(imgSrc) {
+function renderImageOnCanvas(imgSrc, isDownload = false) {
     const img = new Image
     img.src = imgSrc
 
@@ -31,8 +31,9 @@ function renderImageOnCanvas(imgSrc) {
         gMeme.lines[0].borderPos = { x: 0, y: gElCanvas.height / 100 * 20 - gMeme.lines[0].size }
         gMeme.lines[1].borderPos = { x: 0, y: gElCanvas.height - (gElCanvas.height / 100 * 10) - gMeme.lines[1].size }
 
-
+        if (isDownload === false) {
         drawRect(gMeme.lines[gMeme.selectedLineIdx].borderPos.x, gMeme.lines[gMeme.selectedLineIdx].borderPos.y, gMeme.selectedLineIdx)
+        }
         drawText1(gMeme.lines[0].txt, gElCanvas.width / 2, gMeme.lines[0].textPosY)
         drawText2(gMeme.lines[1].txt, gElCanvas.width / 2, gMeme.lines[1].textPosY)
     }
@@ -75,6 +76,7 @@ function onChangeText(text) {
     changeLineText(text)
     gMeme.lines[gMeme.selectedLineIdx].txt = text
     renderImageOnCanvas(gMeme.selectedImg)
+
 }
 
 function onChangeStrokeStyle(color) {
@@ -195,7 +197,9 @@ function renderEditorSection(selectedImg) {
 
                 <div class="download-controller btn-column-gap">
                     <button>Share</button>
-                    <button>Download</button>
+                    <button onmouseover="onDownloadIn()" onmouseout="onDownloadOut()">
+                    <a href="#" onclick="onDownloadClick(this)" download="meme">Download</a>
+                    </button>
                 </div>
             </div>
     `
@@ -238,3 +242,10 @@ function renderSelectedFontFamily() {
 }
 
 
+function onDownloadIn() {
+    renderImageOnCanvas(gMeme.selectedImg, true)
+}
+
+function onDownloadOut() {
+    renderImageOnCanvas(gMeme.selectedImg)
+}
