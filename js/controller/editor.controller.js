@@ -45,7 +45,7 @@ function drawText1(text, x, y) {
     gCtx.lineWidth = 2
     gCtx.fillStyle = gMeme.lines[0].color
     gCtx.textBaseLine = 'middle'
-    gCtx.textAlign = 'center'
+    gCtx.textAlign = gMeme.lines[0].textAlign
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
 }
@@ -56,7 +56,7 @@ function drawText2(text, x, y) {
     gCtx.lineWidth = 2
     gCtx.fillStyle = gMeme.lines[1].color
     gCtx.textBaseLine = 'middle'
-    gCtx.textAlign = 'center'
+    gCtx.textAlign = gMeme.lines[1].textAlign
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
 }
@@ -109,6 +109,21 @@ function onChangeLine() {
     renderImageOnCanvas(gMeme.selectedImg)
 }
 
+function onAlignTextLeft() {
+    changeTextAlign('end')
+    renderImageOnCanvas(gMeme.selectedImg)
+}
+
+function onAlignTextCenter() {
+    changeTextAlign('center')
+    renderImageOnCanvas(gMeme.selectedImg)
+}
+
+function onAlignTextRight() {
+    changeTextAlign('start')
+    renderImageOnCanvas(gMeme.selectedImg)
+}
+
 
 
 // NAVIGATION CLICKS
@@ -144,9 +159,9 @@ function renderEditorSection(selectedImg) {
                 <div class="text-controller btn-column-gap">
                     <button onclick="onChangeLine()">↑↓</button>
                     <button>+</button>
-                    <button>→</button>
-                    <button>d</button>
-                    <button>e</button>
+                    <button onclick="onAlignTextLeft()">←</button>
+                    <button onclick="onAlignTextCenter()">↑</button>
+                    <button onclick="onAlignTextRight()">→</button>
                 </div>
                 
                 <div class="font-controller btn-column-gap">
@@ -220,4 +235,5 @@ function renderSelectedFontFamily() {
     const elSelectFont = document.querySelector('.font-fam-input')
     elSelectFont.value = getFontFamily()
 }
+
 

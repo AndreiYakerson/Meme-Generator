@@ -37,6 +37,7 @@ let gMeme = {
             strokeStyle: 'white',
             color: 'black',
             fontFamily: 'Impact',
+            textAlign: 'center',
             textPosY: 100,
             borderPos: {}
         },
@@ -46,6 +47,7 @@ let gMeme = {
             strokeStyle: 'white',
             color: 'black',
             fontFamily: 'Impact',
+            textAlign: 'center',
             textPosY: 400,
             borderPos: {}
         }
@@ -99,4 +101,8 @@ function getTextColor() {
 
 function getStrokeStyle() {
     return gMeme.lines[gMeme.selectedLineIdx].strokeStyle
+}
+
+function changeTextAlign(value) {
+    gMeme.lines[gMeme.selectedLineIdx].textAlign = value
 }
