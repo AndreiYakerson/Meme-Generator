@@ -34,7 +34,7 @@ let gMeme = {
         {
             txt: '',
             size: 50,
-            strokeStyle: 'white',
+            strokeStyle: '#ffffff',
             color: 'black',
             fontFamily: 'Impact',
             textAlign: 'center',
@@ -45,7 +45,7 @@ let gMeme = {
             txt: '',
             size: 50,
             strokeStyle: 'white',
-            color: 'black',
+            color: '#000000',
             fontFamily: 'Impact',
             textAlign: 'center',
             textPosY: 400,

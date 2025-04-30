@@ -4,7 +4,6 @@
 function onInit(ev) {
     // renderGallerySection()
     renderEditorSection(gMeme.selectedImg)
-
 }
 
 
@@ -183,8 +182,8 @@ function renderEditorSection(selectedImg) {
                         <input class="text-color" id="text-color" type="color" onchange="onChangeTextColor(this.value)" hidden>
                     </button>
                     <button>
-                        <label class="stroke-style" for="stroke-style">🖍️</label>
-                        <input id="stroke-style" type="color" onchange="onChangeStrokeStyle(this.value)" hidden>
+                        <label for="stroke-style">🖍️</label>
+                        <input class="stroke-style" id="stroke-style" type="color" onchange="onChangeStrokeStyle(this.value)" hidden>
                     </button>
                 </div>
 
@@ -205,9 +204,13 @@ function renderEditorSection(selectedImg) {
     `
     gElCanvas = document.querySelector('.canvas')
     gCtx = gElCanvas.getContext('2d')
+    
     resizeCanvas()
     renderImageOnCanvas(selectedImg)
+
     renderInputText()
+    renderInputTextStrokeStyle()
+    renderInputTextColor()
     renderSelectedFontFamily()
 }
 
