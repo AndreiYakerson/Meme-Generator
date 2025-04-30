@@ -31,5 +31,10 @@ label {
     border: solid;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
 
 
