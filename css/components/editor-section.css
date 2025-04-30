@@ -2,7 +2,8 @@
 .editor-section {
     border: solid;
     padding-block: 20px;
-    background-color: var(--clr-brand-basic);
+    /* background-color: var(--clr-brand-basic); */
+    background-image: linear-gradient(to right,gold,rgb(244, 229, 115));
 }
 
 .controller-container {
