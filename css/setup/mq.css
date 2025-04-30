@@ -1,0 +1,17 @@
+@media (max-width: 750px) {
+
+    .main-layout {
+        row-gap: 30px;
+    }
+
+    .editor-section.main-layout {
+        display: block;
+    }
+
+    .gallery-section {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 5px;
+        row-gap: 5px;
+    }
+}
