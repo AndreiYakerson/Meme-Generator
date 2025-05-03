@@ -19,6 +19,12 @@
     font-size: 1.3em;
 }
 
+.controller-container button {
+    background-color: var(--clr-brand-secondary);
+    border: none;
+    box-shadow: 0px 0px 2px 1px #000000a8;
+}
+
 label {
     cursor: pointer;
 }
