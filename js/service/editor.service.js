@@ -38,7 +38,7 @@ let gMeme = {
             color: '#000000',
             fontFamily: 'Impact',
             textAlign: 'center',
-            textPosY: 100,
+            textPosY: 0,
             borderPos: {}
         },
         {
