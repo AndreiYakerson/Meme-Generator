@@ -8,6 +8,8 @@ function onGalleryClick() {
     
     gPage = 'gallery'
 
+    let elEditorSection = document.querySelector('.editor-section')
+    elEditorSection.style.opacity = 0
 
     toggleUnderLineClass()
     renderGallerySection()

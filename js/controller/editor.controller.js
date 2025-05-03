@@ -143,6 +143,9 @@ function onEditorClick() {
 
     gPage = 'editor'
 
+    let elEditorSection = document.querySelector('.editor-section')
+    elEditorSection.style.opacity = 1
+
     toggleUnderLineClass()
     renderEditorSection()
     renderImageOnCanvas(gMeme.selectedImg)
