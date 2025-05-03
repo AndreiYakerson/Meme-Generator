@@ -60,7 +60,7 @@ function onChangeSearchInput(txt) {
 function getFilteredImgs(imgs, word) {
     let result = imgs.filter((img) => {
         return img.keywords.some((keyword) => {
-            return keyword.includes(word)
+            return keyword.includes(word.toLowerCase())
         })
     })
 
