@@ -15,6 +15,13 @@ function resizeCanvas() {
     renderImageOnCanvas(gMeme.selectedImg)
 }
 
+function setTextPos() {
+    gMeme.lines[0].textPosY = gElCanvas.height / 100 * 20
+    gMeme.lines[1].textPosY = gElCanvas.height - (gElCanvas.height / 100 * 10)
+
+    gMeme.lines[0].borderPos = { x: 0, y: gElCanvas.height / 100 * 20 - gMeme.lines[0].size }
+    gMeme.lines[1].borderPos = { x: 0, y: gElCanvas.height - (gElCanvas.height / 100 * 10) - gMeme.lines[1].size }
+}
 
 function renderImageOnCanvas(imgSrc, isDownload = false) {
     const img = new Image
