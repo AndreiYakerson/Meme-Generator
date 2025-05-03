@@ -128,6 +128,12 @@ function onAlignTextRight() {
     renderImageOnCanvas(gMeme.selectedImg)
 }
 
+function onClearLine() {
+    removeText()
+    renderImageOnCanvas(gMeme.selectedImg)
+    renderInputText()
+}
+
 
 
 // NAVIGATION CLICKS
@@ -162,7 +168,7 @@ function renderEditorSection(selectedImg) {
 
                 <div class="text-controller btn-column-gap">
                     <button onclick="onChangeLine()">↑↓</button>
-                    <button>+</button>
+                    <button onclick="onClearLine()">🗑️</button>
                     <button>c</button>
                     <button>f</button>
                     <button>g</button>

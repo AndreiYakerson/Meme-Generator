@@ -106,3 +106,7 @@ function getStrokeStyle() {
 function changeTextAlign(value) {
     gMeme.lines[gMeme.selectedLineIdx].textAlign = value
 }
+
+function removeText() {
+    gMeme.lines[gMeme.selectedLineIdx].txt = ''
+}
