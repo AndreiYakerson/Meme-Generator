@@ -40,8 +40,12 @@ function renderImageOnCanvas(imgSrc, isDownload = false) {
         if (isDownload === false) {
         drawRect(gMeme.lines[gMeme.selectedLineIdx].borderPos.x, gMeme.lines[gMeme.selectedLineIdx].borderPos.y, gMeme.selectedLineIdx)
         }
-        drawText1(gMeme.lines[0].txt, gElCanvas.width / 2, gMeme.lines[0].textPosY)
-        drawText2(gMeme.lines[1].txt, gElCanvas.width / 2, gMeme.lines[1].textPosY)
+
+        for (let i = 0; i < gMeme.lines.length; i++) {
+            drawText1(gMeme.lines[i].txt, gElCanvas.width / 2, gMeme.lines[i].textPosY)
+        }
+        // drawText1(gMeme.lines[0].txt, gElCanvas.width / 2, gMeme.lines[0].textPosY)
+        // drawText2(gMeme.lines[1].txt, gElCanvas.width / 2, gMeme.lines[1].textPosY)
     }
 
 }
