@@ -154,11 +154,12 @@ function onEditorClick() {
 // RENDER SECTIONS
 
 function renderEditorSection(selectedImg) {
+    
     let elEditorSection = document.querySelector('.editor-section')
     let elGallerySection = document.querySelector('.gallery-section')
 
     elGallerySection.innerHTML = ''
-
+    elEditorSection.style.opacity = 1
 
 
     elEditorSection.innerHTML = `
@@ -213,6 +214,7 @@ function renderEditorSection(selectedImg) {
                 </div>
             </div>
     `
+    
     gElCanvas = document.querySelector('.canvas')
     gCtx = gElCanvas.getContext('2d')
     
