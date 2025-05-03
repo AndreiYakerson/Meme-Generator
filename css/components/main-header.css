@@ -1,7 +1,7 @@
 .main-header {
-    border: solid;
+    box-shadow: 2px 1px 2px 1px #000000a8;
     padding-block: 5px;
-    background-color: var(--clr-brand-basic);
+    background-image: var(--clr-gradient);
 }
 
 .logo {
