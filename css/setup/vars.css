@@ -3,4 +3,5 @@
 :root {
     --clr-brand-basic: gold;
     --clr-brand-secondary: rgb(0 212 255);;
+    --clr-gradient: linear-gradient(to right,gold,rgb(244, 229, 115))
 }
