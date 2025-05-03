@@ -15,6 +15,7 @@
 @import url('components/editor-section.css');
 @import url('components/img-gallery.css');
 @import url('components/input-gallery.css');
+@import url('components/logo.css');
 
 /* MQ */
 @import url('setup/mq.css');
