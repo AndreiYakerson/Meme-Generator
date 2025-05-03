@@ -36,11 +36,11 @@ function renderGallery(imgs) {
     elEditorSection.innerHTML = ''
     elGallerySection.innerHTML = ''
 
-    
-    gImgs.forEach((img,idx) => {
-        console.log(img.src);
-        
-        elGallerySection.innerHTML += `<img id="${idx+1}" onclick="onGalleryImgClick(this)" class="img-gallery" src="${img.src}">`
+    imgs.forEach((img, idx) => {
+        elGallerySection.innerHTML += `
+        <img id="${idx + 1}"
+        onclick="onGalleryImgClick(this)"
+        class="img-gallery" src="${img.src}">`
     })
 
 }
@@ -51,3 +51,23 @@ function onGalleryImgClick(el) {
     gMeme.selectedImg = el.src
     renderEditorSection(gMeme.selectedImg)
 }
+
+function onChangeSearchInput(txt) {
+    // if (!txt) renderGallerySection(gImgs)
+    renderGallery(getFilteredImgs(gImgs, txt))
+}
+
+function getFilteredImgs(imgs, word) {
+    let result = imgs.filter((img) => {
+        return img.keywords.some((keyword) => {
+            return keyword.includes(word)
+        })
+    })
+
+    return result
+}
+
+
+
+
+
