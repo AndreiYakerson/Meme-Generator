@@ -31,12 +31,6 @@ function renderImageOnCanvas(imgSrc, isDownload = false) {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
-        gMeme.lines[0].textPosY = gElCanvas.height / 100 * 20
-        gMeme.lines[1].textPosY = gElCanvas.height - (gElCanvas.height / 100 * 10)
-
-        gMeme.lines[0].borderPos = { x: 0, y: gElCanvas.height / 100 * 20 - gMeme.lines[0].size }
-        gMeme.lines[1].borderPos = { x: 0, y: gElCanvas.height - (gElCanvas.height / 100 * 10) - gMeme.lines[1].size }
-
         if (isDownload === false) {
         drawRect(gMeme.lines[gMeme.selectedLineIdx].borderPos.x, gMeme.lines[gMeme.selectedLineIdx].borderPos.y, gMeme.selectedLineIdx)
         }
@@ -145,6 +139,18 @@ function onClearLine() {
     renderInputText()
 }
 
+function onMoveUp() {
+    gMeme.lines[gMeme.selectedLineIdx].textPosY -= 10
+    gMeme.lines[gMeme.selectedLineIdx].borderPos.y -= 10
+    renderImageOnCanvas(gMeme.selectedImg)
+}
+
+function onMoveDown() {
+    gMeme.lines[gMeme.selectedLineIdx].textPosY += 10
+    gMeme.lines[gMeme.selectedLineIdx].borderPos.y += 10
+    renderImageOnCanvas(gMeme.selectedImg)
+}
+
 
 
 // NAVIGATION CLICKS
@@ -184,8 +190,8 @@ function renderEditorSection(selectedImg) {
                 <div class="text-controller btn-column-gap">
                     <button onclick="onChangeLine()">↑↓</button>
                     <button onclick="onClearLine()">🗑️</button>
-                    <button>c</button>
-                    <button>f</button>
+                    <button onclick="onMoveUp()">Up</button>
+                    <button onclick="onMoveDown()">Down</button>
                     <button>g</button>
                 </div>
                 
@@ -225,11 +231,12 @@ function renderEditorSection(selectedImg) {
                 </div>
             </div>
     `
-    
+
     gElCanvas = document.querySelector('.canvas')
     gCtx = gElCanvas.getContext('2d')
-    
+
     resizeCanvas()
+    setTextPos()
     renderImageOnCanvas(selectedImg)
 
     renderInputText()
