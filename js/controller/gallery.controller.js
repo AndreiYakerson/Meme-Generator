@@ -12,13 +12,26 @@ function onGalleryClick() {
     elEditorSection.style.opacity = 0
 
     toggleUnderLineClass()
-    renderGallerySection()
+    renderSearchInput()
+    renderGallery(gImgs)
 }
 
-function renderGallerySection() {
-    
-    let elEditorSection = document.querySelector('.editor-section')
+function renderSearchInput() {
     let elGallerySection = document.querySelector('.gallery-section')
+
+
+    elGallerySection.innerHTML = `
+    <input class="input-search-gallery"
+     type="text" placeholder="Search" 
+     oninput="onChangeSearchInput(this.value)">
+     <section class="gallery"></section>
+    `
+}
+
+function renderGallery(imgs) {
+
+    let elEditorSection = document.querySelector('.editor-section')
+    let elGallerySection = document.querySelector('.gallery')
 
     elEditorSection.innerHTML = ''
     elGallerySection.innerHTML = ''
