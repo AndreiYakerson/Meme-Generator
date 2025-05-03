@@ -1,8 +1,7 @@
 
 .editor-section {
-    border: solid;
+    box-shadow: 0 0 10px 5px #00000087;
     padding-block: 20px;
-    /* background-color: var(--clr-brand-basic); */
     background-image: linear-gradient(to right,gold,rgb(244, 229, 115));
 }
 
