@@ -1,0 +1,52 @@
+
+.fa {
+    font-family: fa;
+}
+
+.fa.arrow-up-down::before {
+    content: '\f062\f063';
+}
+
+.fa.trash::before {
+    content: '\f1f8';
+}
+
+.fa.sizeUp::before {
+    content: '\41\2b';
+}
+
+.fa.sizeDown::before {
+    content: '\41\f068';
+}
+
+.fa.arrUp::before {
+    content: '\f062';
+}
+
+.fa.arrDown::before {
+    content: '\f063';
+}
+
+.fa.plus::before {
+    content: '\2b';
+}
+
+.fa.alignLeft::before {
+    content: '\f036';
+}
+
+.fa.alignCenter::before {
+    content: '\f037';
+}
+
+.fa.alignRight::before {
+    content: '\f038';
+}
+
+.fa.txtColor::before {
+    content: '\f53f';
+}
+
+.fa.txtStroke::before {
+    content: '\f303';
+}

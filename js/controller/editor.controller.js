@@ -180,30 +180,30 @@ function renderEditorSection(selectedImg) {
                 <input class="text-input" type="text" oninput="onChangeText(this.value)" placeholder="Add text">
 
                 <div class="text-controller btn-column-gap">
-                    <button onclick="onChangeLine()">↑↓</button>
-                    <button onclick="onClearLine()">🗑️</button>
-                    <button onclick="onMoveUp()">Up</button>
-                    <button onclick="onMoveDown()">Down</button>
-                    <button>g</button>
+                    <button class="fa arrow-up-down" onclick="onChangeLine()"></button>
+                    <button class="fa plus"></button>
+                    <button class="fa arrUp" onclick="onMoveUp()"></button>
+                    <button class="fa arrDown" onclick="onMoveDown()"></button>
+                    <button class="fa trash" onclick="onClearLine()"></button>
                 </div>
                 
                 <div class="font-controller btn-column-gap">
-                    <button onclick="onTextSizeUp()">A+</button>
-                    <button onclick="onTextSizeDown()">A-</button>
-                    <button onclick="onAlignTextLeft()">←</button>
-                    <button onclick="onAlignTextCenter()">↑</button>
-                    <button onclick="onAlignTextRight()">→</button>
+                    <button class="fa sizeUp" onclick="onTextSizeUp()"></button>
+                    <button class="fa sizeDown" onclick="onTextSizeDown()"></button>
+                    <button class="fa alignLeft" onclick="onAlignTextLeft()"></button>
+                    <button class="fa alignCenter" onclick="onAlignTextCenter()"></button>
+                    <button class="fa alignRight" onclick="onAlignTextRight()"></button>
                     <select class="font-fam-input text-input" onchange="onChangeFontFamily(this.value)" name="font-family" id="font-family">
                     <option value="Arial">Arial</option>
                     <option value="Times New Roman">Times</option>
                     <option value="Impact" selected>Impact</option>
                     </select>
                     <button>
-                        <label for="text-color">🎨</label>
+                        <label class="fa txtColor" for="text-color"></label>
                         <input class="text-color" id="text-color" type="color" onchange="onChangeTextColor(this.value)" hidden>
                     </button>
                     <button>
-                        <label for="stroke-style">🖍️</label>
+                        <label class="fa txtStroke" for="stroke-style"></label>
                         <input class="stroke-style" id="stroke-style" type="color" onchange="onChangeStrokeStyle(this.value)" hidden>
                     </button>
                 </div>
