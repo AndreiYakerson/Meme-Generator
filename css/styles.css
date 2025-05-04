@@ -2,6 +2,7 @@
 /* Setup */
 @import url('setup/vars.css');
 @import url('setup/typography.css');
+@import url('components/icons.css');
 
 
 
@@ -18,7 +19,6 @@
 @import url('components/editor-section.css');
 @import url('components/img-gallery.css');
 @import url('components/input-gallery.css');
-@import url('components/icons.css');
 
 
 /* MQ */

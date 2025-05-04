@@ -16,11 +16,11 @@ function resizeCanvas() {
 }
 
 function setTextPos() {
-    gMeme.lines[0].textPosY = gElCanvas.height / 60 * 20 - gMeme.lines[gMeme.selectedLineIdx].size
-    gMeme.lines[1].textPosY = gElCanvas.height - (gElCanvas.height / 100) - (gMeme.lines[gMeme.selectedLineIdx].size / 2)
+    gMeme.lines[0].textPosY = gElCanvas.height / 100 * 30 - gMeme.lines[gMeme.selectedLineIdx].size
+    // gMeme.lines[1].textPosY = gElCanvas.height - (gElCanvas.height / 100) - (gMeme.lines[gMeme.selectedLineIdx].size / 2)
 
-    gMeme.lines[0].borderPos = { x: 0, y: gElCanvas.height / 60 * 20 - gMeme.lines[0].size }
-    gMeme.lines[1].borderPos = { x: 0, y: gElCanvas.height - (gElCanvas.height / 100 * 2) - (gMeme.lines[1].size / 2) }
+
+    gMeme.lines[0].borderPos = { x: 0, y: gElCanvas.height / 100 * 30 - gMeme.lines[0].size }
 }
 
 function renderImageOnCanvas(imgSrc, isDownload = false) {
@@ -33,18 +33,18 @@ function renderImageOnCanvas(imgSrc, isDownload = false) {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
         if (isDownload === false) {
-        drawRect(gMeme.lines[gMeme.selectedLineIdx].borderPos.x, gMeme.lines[gMeme.selectedLineIdx].borderPos.y - gMeme.lines[gMeme.selectedLineIdx].size , gMeme.selectedLineIdx)
+            drawRect(gMeme.lines[gMeme.selectedLineIdx].borderPos.x, gMeme.lines[gMeme.selectedLineIdx].borderPos.y - gMeme.lines[gMeme.selectedLineIdx].size, gMeme.selectedLineIdx)
         }
 
         for (let i = 0; i < gMeme.lines.length; i++) {
-            drawText(gMeme.lines[i].txt,i, gElCanvas.width / 2, gMeme.lines[i].textPosY)
-            
+            drawText(gMeme.lines[i].txt, i, gElCanvas.width / 2, gMeme.lines[i].textPosY)
+
         }
     }
 
 }
 
-function drawText(text,i, x, y) {
+function drawText(text, i, x, y) {
     gCtx.font = `${gMeme.lines[i].size}px ${gMeme.lines[i].fontFamily}`
     gCtx.strokeStyle = gMeme.lines[i].strokeStyle
     gCtx.lineWidth = 2
@@ -105,7 +105,6 @@ function onChangeLine() {
     renderInputTextStrokeStyle()
     renderSelectedFontFamily()
     renderImageOnCanvas(gMeme.selectedImg)
-    console.log(gMeme.selectedLineIdx);
 }
 
 function onAlignTextLeft() {
@@ -141,6 +140,10 @@ function onMoveDown() {
     renderImageOnCanvas(gMeme.selectedImg)
 }
 
+function onAddLine() {
+    addLine()
+}
+
 
 
 // NAVIGATION CLICKS
@@ -161,7 +164,7 @@ function onEditorClick() {
 // RENDER SECTIONS
 
 function renderEditorSection(selectedImg) {
-    
+
     let elEditorSection = document.querySelector('.editor-section')
     let elGallerySection = document.querySelector('.gallery-section')
 

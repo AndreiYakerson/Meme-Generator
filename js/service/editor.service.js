@@ -41,22 +41,15 @@ let gMeme = {
             textPosY: 0,
             borderPos: {}
         },
-        {
-            txt: '',
-            size: 50,
-            strokeStyle: '#ffffff',
-            color: '#000000',
-            fontFamily: 'Impact',
-            textAlign: 'center',
-            textPosY: 400,
-            borderPos: {}
-        }
+        
     ]
 }
 
 // var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function changeSelectedLine() {
+    if (gMeme.lines.length === 1) return
+
     if (gMeme.selectedLineIdx === 1) gMeme.selectedLineIdx = 0
     else gMeme.selectedLineIdx = 1
 }
@@ -109,4 +102,19 @@ function changeTextAlign(value) {
 
 function removeText() {
     gMeme.lines[gMeme.selectedLineIdx].txt = ''
+}
+
+function addLine() {
+   const line =  {
+        txt: '',
+        size: 50,
+        strokeStyle: '#ffffff',
+        color: '#000000',
+        fontFamily: 'Impact',
+        textAlign: 'center',
+        textPosY: gMeme.lines[gMeme.selectedLineIdx - 1].textPosY + 100,
+        borderPos: {x: 0, y: gMeme.lines[gMeme.selectedLineIdx - 1] + 100}
+    }
+
+    gMeme.lines.push(line)
 }
