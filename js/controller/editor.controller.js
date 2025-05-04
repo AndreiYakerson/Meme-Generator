@@ -16,11 +16,11 @@ function resizeCanvas() {
 }
 
 function setTextPos() {
-    gMeme.lines[0].textPosY = gElCanvas.height / 100 * 30 - gMeme.lines[gMeme.selectedLineIdx].size
+    gMeme.lines[gMeme.selectedLineIdx].textPosY = gElCanvas.height / 100 * 30 - gMeme.lines[gMeme.selectedLineIdx].size
     // gMeme.lines[1].textPosY = gElCanvas.height - (gElCanvas.height / 100) - (gMeme.lines[gMeme.selectedLineIdx].size / 2)
 
 
-    gMeme.lines[0].borderPos = { x: 0, y: gElCanvas.height / 100 * 30 - gMeme.lines[0].size }
+    gMeme.lines[gMeme.selectedLineIdx].borderPos = { x: 0, y: gElCanvas.height / 100 * 30 - gMeme.lines[0].size }
 }
 
 function renderImageOnCanvas(imgSrc, isDownload = false) {
@@ -142,6 +142,13 @@ function onMoveDown() {
 
 function onAddLine() {
     addLine()
+    changeSelectedLine()
+    renderInputText()
+    renderInputTextColor()
+    renderInputTextStrokeStyle()
+    renderSelectedFontFamily()
+    renderImageOnCanvas(gMeme.selectedImg)
+
 }
 
 
@@ -182,7 +189,7 @@ function renderEditorSection(selectedImg) {
 
                 <div class="text-controller btn-column-gap">
                     <button class="fa arrow-up-down" onclick="onChangeLine()"></button>
-                    <button class="fa plus"></button>
+                    <button class="fa plus" onclick="onAddLine()"></button>
                     <button class="fa arrUp" onclick="onMoveUp()"></button>
                     <button class="fa arrDown" onclick="onMoveDown()"></button>
                     <button class="fa trash" onclick="onClearLine()"></button>

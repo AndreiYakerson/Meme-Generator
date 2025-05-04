@@ -50,8 +50,8 @@ let gMeme = {
 function changeSelectedLine() {
     if (gMeme.lines.length === 1) return
 
-    if (gMeme.selectedLineIdx === 1) gMeme.selectedLineIdx = 0
-    else gMeme.selectedLineIdx = 1
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0
+    else gMeme.selectedLineIdx++
 }
 
 function changeTextSizeUp(amount) {
@@ -112,9 +112,8 @@ function addLine() {
         color: '#000000',
         fontFamily: 'Impact',
         textAlign: 'center',
-        textPosY: gMeme.lines[gMeme.selectedLineIdx - 1].textPosY + 100,
-        borderPos: {x: 0, y: gMeme.lines[gMeme.selectedLineIdx - 1] + 100}
+        textPosY: gMeme.lines[gMeme.selectedLineIdx].textPosY + 100,
+        borderPos: {x: 0, y: gMeme.lines[gMeme.selectedLineIdx].borderPos.y + 100}
     }
-
     gMeme.lines.push(line)
 }
