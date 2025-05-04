@@ -27,6 +27,8 @@ function renderImageOnCanvas(imgSrc, isDownload = false) {
     const img = new Image
     img.src = imgSrc
 
+    setTextPos()
+
     img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
@@ -36,32 +38,21 @@ function renderImageOnCanvas(imgSrc, isDownload = false) {
         }
 
         for (let i = 0; i < gMeme.lines.length; i++) {
-            drawText1(gMeme.lines[i].txt, gElCanvas.width / 2, gMeme.lines[i].textPosY)
+            drawText(gMeme.lines[i].txt,i, gElCanvas.width / 2, gMeme.lines[i].textPosY)
+            console.log('it is',i);
+            
         }
-        // drawText1(gMeme.lines[0].txt, gElCanvas.width / 2, gMeme.lines[0].textPosY)
-        // drawText2(gMeme.lines[1].txt, gElCanvas.width / 2, gMeme.lines[1].textPosY)
     }
 
 }
 
-function drawText1(text, x, y) {
-    gCtx.font = `${gMeme.lines[0].size}px ${gMeme.lines[0].fontFamily}`
-    gCtx.strokeStyle = gMeme.lines[0].strokeStyle
+function drawText(text,i, x, y) {
+    gCtx.font = `${gMeme.lines[i].size}px ${gMeme.lines[i].fontFamily}`
+    gCtx.strokeStyle = gMeme.lines[i].strokeStyle
     gCtx.lineWidth = 2
-    gCtx.fillStyle = gMeme.lines[0].color
+    gCtx.fillStyle = gMeme.lines[i].color
     gCtx.textBaseLine = 'middle'
-    gCtx.textAlign = gMeme.lines[0].textAlign
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
-}
-
-function drawText2(text, x, y) {
-    gCtx.font = `${gMeme.lines[1].size}px ${gMeme.lines[1].fontFamily}`
-    gCtx.strokeStyle = gMeme.lines[1].strokeStyle
-    gCtx.lineWidth = 2
-    gCtx.fillStyle = gMeme.lines[1].color
-    gCtx.textBaseLine = 'middle'
-    gCtx.textAlign = gMeme.lines[1].textAlign
+    gCtx.textAlign = gMeme.lines[i].textAlign
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
 }
@@ -116,6 +107,7 @@ function onChangeLine() {
     renderInputTextStrokeStyle()
     renderSelectedFontFamily()
     renderImageOnCanvas(gMeme.selectedImg)
+    console.log(gMeme.selectedLineIdx);
 }
 
 function onAlignTextLeft() {
@@ -236,7 +228,6 @@ function renderEditorSection(selectedImg) {
     gCtx = gElCanvas.getContext('2d')
 
     resizeCanvas()
-    setTextPos()
     renderImageOnCanvas(selectedImg)
 
     renderInputText()
