@@ -8,6 +8,8 @@ function onGalleryClick() {
     
     gPage = 'gallery'
 
+    resetLineIdx()
+
     let elEditorSection = document.querySelector('.editor-section')
     elEditorSection.style.opacity = 0
 
@@ -46,6 +48,7 @@ function renderGallery(imgs) {
 }
 
 function onGalleryImgClick(el) {
+    resetLineIdx()
     gPage = 'editor'
     toggleUnderLineClass()
     gMeme.selectedImg = el.src

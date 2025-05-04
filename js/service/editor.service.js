@@ -125,3 +125,7 @@ function removeLine() {
 function changeToPrevIdx() {
     gMeme.selectedLineIdx--
 }
+
+function resetLineIdx() {
+    gMeme.selectedLineIdx = 0
+}
