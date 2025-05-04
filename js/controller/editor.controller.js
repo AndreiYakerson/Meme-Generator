@@ -16,30 +16,28 @@ function resizeCanvas() {
 }
 
 function setTextPos() {
-    gMeme.lines[0].textPosY = gElCanvas.height / 100 * 20
-    gMeme.lines[1].textPosY = gElCanvas.height - (gElCanvas.height / 100 * 10)
+    gMeme.lines[0].textPosY = gElCanvas.height / 60 * 20 - gMeme.lines[gMeme.selectedLineIdx].size
+    gMeme.lines[1].textPosY = gElCanvas.height - (gElCanvas.height / 100) - (gMeme.lines[gMeme.selectedLineIdx].size / 2)
 
-    gMeme.lines[0].borderPos = { x: 0, y: gElCanvas.height / 100 * 20 - gMeme.lines[0].size }
-    gMeme.lines[1].borderPos = { x: 0, y: gElCanvas.height - (gElCanvas.height / 100 * 10) - gMeme.lines[1].size }
+    gMeme.lines[0].borderPos = { x: 0, y: gElCanvas.height / 60 * 20 - gMeme.lines[0].size }
+    gMeme.lines[1].borderPos = { x: 0, y: gElCanvas.height - (gElCanvas.height / 100 * 2) - (gMeme.lines[1].size / 2) }
 }
 
 function renderImageOnCanvas(imgSrc, isDownload = false) {
     const img = new Image
     img.src = imgSrc
 
-    setTextPos()
 
     img.onload = () => {
         gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
         if (isDownload === false) {
-        drawRect(gMeme.lines[gMeme.selectedLineIdx].borderPos.x, gMeme.lines[gMeme.selectedLineIdx].borderPos.y, gMeme.selectedLineIdx)
+        drawRect(gMeme.lines[gMeme.selectedLineIdx].borderPos.x, gMeme.lines[gMeme.selectedLineIdx].borderPos.y - gMeme.lines[gMeme.selectedLineIdx].size , gMeme.selectedLineIdx)
         }
 
         for (let i = 0; i < gMeme.lines.length; i++) {
             drawText(gMeme.lines[i].txt,i, gElCanvas.width / 2, gMeme.lines[i].textPosY)
-            console.log('it is',i);
             
         }
     }
@@ -228,6 +226,7 @@ function renderEditorSection(selectedImg) {
     gCtx = gElCanvas.getContext('2d')
 
     resizeCanvas()
+    setTextPos()
     renderImageOnCanvas(selectedImg)
 
     renderInputText()
