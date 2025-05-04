@@ -117,3 +117,11 @@ function addLine() {
     }
     gMeme.lines.push(line)
 }
+
+function removeLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+}
+
+function changeToPrevIdx() {
+    gMeme.selectedLineIdx--
+}

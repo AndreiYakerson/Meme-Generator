@@ -122,8 +122,12 @@ function onAlignTextRight() {
     renderImageOnCanvas(gMeme.selectedImg)
 }
 
-function onClearLine() {
+function onRemoveLine() {
+    if (gMeme.lines.length === 1 || gMeme.selectedLineIdx === 0) return
+
     removeText()
+    removeLine()
+    changeToPrevIdx()
     renderImageOnCanvas(gMeme.selectedImg)
     renderInputText()
 }
@@ -148,7 +152,6 @@ function onAddLine() {
     renderInputTextStrokeStyle()
     renderSelectedFontFamily()
     renderImageOnCanvas(gMeme.selectedImg)
-
 }
 
 
@@ -192,7 +195,7 @@ function renderEditorSection(selectedImg) {
                     <button class="fa plus" onclick="onAddLine()"></button>
                     <button class="fa arrUp" onclick="onMoveUp()"></button>
                     <button class="fa arrDown" onclick="onMoveDown()"></button>
-                    <button class="fa trash" onclick="onClearLine()"></button>
+                    <button class="fa trash" onclick="onRemoveLine()"></button>
                 </div>
                 
                 <div class="font-controller btn-column-gap">
