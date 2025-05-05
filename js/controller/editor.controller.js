@@ -1,9 +1,8 @@
 'use strict'
 
 
-function onInit(ev) {
-    // renderGallerySection()
-    renderEditorSection(gMeme.selectedImg)
+function onInit() {
+    renderEditorSection(getSelectedImg())
 }
 
 
@@ -12,15 +11,7 @@ function onInit(ev) {
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.clientWidth
-    renderImageOnCanvas(gMeme.selectedImg)
-}
-
-function setTextPos() {
-    gMeme.lines[gMeme.selectedLineIdx].textPosY = gElCanvas.height / 100 * 30 - gMeme.lines[gMeme.selectedLineIdx].size
-    // gMeme.lines[1].textPosY = gElCanvas.height - (gElCanvas.height / 100) - (gMeme.lines[gMeme.selectedLineIdx].size / 2)
-
-
-    gMeme.lines[gMeme.selectedLineIdx].borderPos = { x: 0, y: gElCanvas.height / 100 * 30 - gMeme.lines[0].size }
+    renderImageOnCanvas(getSelectedImg())
 }
 
 function renderImageOnCanvas(imgSrc, isDownload = false) {
@@ -33,12 +24,11 @@ function renderImageOnCanvas(imgSrc, isDownload = false) {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
         if (isDownload === false) {
-            drawRect(gMeme.lines[gMeme.selectedLineIdx].borderPos.x, gMeme.lines[gMeme.selectedLineIdx].borderPos.y - gMeme.lines[gMeme.selectedLineIdx].size, gMeme.selectedLineIdx)
+            drawRect(gMeme.lines[getSelectedIdx()].borderPos.x, gMeme.lines[getSelectedIdx()].borderPos.y - gMeme.lines[getSelectedIdx()].size, getSelectedIdx())
         }
 
         for (let i = 0; i < gMeme.lines.length; i++) {
             drawText(gMeme.lines[i].txt, i, gElCanvas.width / 2, gMeme.lines[i].textPosY)
-
         }
     }
 
@@ -57,8 +47,8 @@ function drawText(text, i, x, y) {
 
 function drawRect(x, y, lineIdx) {
     gCtx.strokeStyle = 'black'
-    gCtx.strokeRect(x, y, gElCanvas.width, 15 + gMeme.lines[lineIdx].size)
     gCtx.fillStyle = 'rgba(255, 217, 0, 0.46)';
+    gCtx.strokeRect(x, y, gElCanvas.width, 15 + gMeme.lines[lineIdx].size)
     gCtx.fillRect(x, y, gElCanvas.width, 15 + gMeme.lines[lineIdx].size)
 }
 
@@ -67,35 +57,34 @@ function drawRect(x, y, lineIdx) {
 
 function onChangeText(text) {
     changeLineText(text)
-    gMeme.lines[gMeme.selectedLineIdx].txt = text
-    renderImageOnCanvas(gMeme.selectedImg)
-
+    changeText(text)
+    renderImageOnCanvas(getSelectedImg())
 }
 
 function onChangeStrokeStyle(color) {
     changeStrokeStyle(color)
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
 }
 
 function onChangeTextColor(color) {
     changeTextColor(color)
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
 }
 
 
 function onTextSizeUp() {
     changeTextSizeUp(5)
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
 }
 
 function onTextSizeDown() {
     changeTextSizeDown(5)
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
 }
 
 function onChangeFontFamily(font) {
     changeFontFamily(font)
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
 }
 
 function onChangeLine() {
@@ -104,44 +93,44 @@ function onChangeLine() {
     renderInputTextColor()
     renderInputTextStrokeStyle()
     renderSelectedFontFamily()
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
 }
 
 function onAlignTextLeft() {
     changeTextAlign('end')
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
 }
 
 function onAlignTextCenter() {
     changeTextAlign('center')
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
 }
 
 function onAlignTextRight() {
     changeTextAlign('start')
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
 }
 
 function onRemoveLine() {
-    if (gMeme.lines.length === 1 || gMeme.selectedLineIdx === 0) return
+    if (gMeme.lines.length === 1 || getSelectedIdx() === 0) return
 
     removeText()
     removeLine()
     changeToPrevIdx()
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
     renderInputText()
 }
 
 function onMoveUp() {
-    gMeme.lines[gMeme.selectedLineIdx].textPosY -= 10
-    gMeme.lines[gMeme.selectedLineIdx].borderPos.y -= 10
-    renderImageOnCanvas(gMeme.selectedImg)
+    gMeme.lines[getSelectedIdx()].textPosY -= 10
+    gMeme.lines[getSelectedIdx()].borderPos.y -= 10
+    renderImageOnCanvas(getSelectedImg())
 }
 
 function onMoveDown() {
-    gMeme.lines[gMeme.selectedLineIdx].textPosY += 10
-    gMeme.lines[gMeme.selectedLineIdx].borderPos.y += 10
-    renderImageOnCanvas(gMeme.selectedImg)
+    gMeme.lines[getSelectedIdx()].textPosY += 10
+    gMeme.lines[getSelectedIdx()].borderPos.y += 10
+    renderImageOnCanvas(getSelectedImg())
 }
 
 function onAddLine() {
@@ -151,9 +140,13 @@ function onAddLine() {
     renderInputTextColor()
     renderInputTextStrokeStyle()
     renderSelectedFontFamily()
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
 }
 
+function onDownloadClick(elLink) {
+    const dataUrl = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = dataUrl
+}
 
 
 // NAVIGATION CLICKS
@@ -168,7 +161,7 @@ function onEditorClick() {
 
     toggleUnderLineClass()
     renderEditorSection()
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
 }
 
 // RENDER SECTIONS
@@ -219,15 +212,7 @@ function renderEditorSection(selectedImg) {
                     </button>
                 </div>
 
-                <div class="sticker-controller btn-column-gap">
-                    <button>😁</button>
-                    <button>😇</button>
-                    <button>😍</button>
-                    <button>🥸</button>
-                </div>
-
                 <div class="download-controller btn-column-gap">
-                    <button>Share</button>
                     <button onmouseover="onDownloadIn()" onmouseout="onDownloadOut()">
                     <a href="#" onclick="onDownloadClick(this)" download="meme">Download</a>
                     </button>
@@ -247,16 +232,6 @@ function renderEditorSection(selectedImg) {
     renderInputTextColor()
     renderSelectedFontFamily()
 }
-
-
-function toggleUnderLineClass() {
-    const elGalleryLink = document.querySelector('.gallery-nav')
-    const elEditorLink = document.querySelector('.editor-nav')
-    elGalleryLink.classList.toggle('underLine')
-    elEditorLink.classList.toggle('underLine')
-}
-
-
 
 function renderInputText() {
     const elTextInput = document.querySelector('.text-input')
@@ -278,15 +253,17 @@ function renderSelectedFontFamily() {
     elSelectFont.value = getFontFamily()
 }
 
-function onDownloadClick(elLink) {
-    const dataUrl = gElCanvas.toDataURL('image/jpeg')
-    elLink.href = dataUrl
-}
-
 function onDownloadIn() {
-    renderImageOnCanvas(gMeme.selectedImg, true)
+    renderImageOnCanvas(getSelectedImg(), true)
 }
 
 function onDownloadOut() {
-    renderImageOnCanvas(gMeme.selectedImg)
+    renderImageOnCanvas(getSelectedImg())
+}
+
+function toggleUnderLineClass() {
+    const elGalleryLink = document.querySelector('.gallery-nav')
+    const elEditorLink = document.querySelector('.editor-nav')
+    elGalleryLink.classList.toggle('underLine')
+    elEditorLink.classList.toggle('underLine')
 }
