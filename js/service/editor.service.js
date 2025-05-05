@@ -1,30 +1,13 @@
 'use strict'
 
+//G VARS
+
 let gElCanvas
 let gCtx
 let gPage = 'editor'
 
-var gImgs = [
-    { id: 1, src: 'img/meme-imgs (square)/1.jpg', keywords: ['funny', 'man', 'tramp', 'president'] },
-    { id: 2, src: 'img/meme-imgs (square)/2.jpg', keywords: ['funny','animals', 'dogs'] },
-    { id: 3, src: 'img/meme-imgs (square)/3.jpg', keywords: ['funny', 'animals', 'dogs', 'baby'] },
-    { id: 4, src: 'img/meme-imgs (square)/4.jpg', keywords: ['funny','animals', 'cat'] },
-    { id: 5, src: 'img/meme-imgs (square)/5.jpg', keywords: ['funny', 'baby'] },
-    { id: 6, src: 'img/meme-imgs (square)/6.jpg', keywords: ['funny','man'] },
-    { id: 7, src: 'img/meme-imgs (square)/7.jpg', keywords: ['funny', 'baby'] },
-    { id: 8, src: 'img/meme-imgs (square)/8.jpg', keywords: ['funny','man'] },
-    { id: 9, src: 'img/meme-imgs (square)/9.jpg', keywords: ['funny', 'baby'] },
-    { id: 10, src: 'img/meme-imgs (square)/10.jpg', keywords: ['funny', 'man', 'obama','president'] },
-    { id: 11, src: 'img/meme-imgs (square)/12.jpg', keywords: ['funny', 'man'] },
-    { id: 12, src: 'img/meme-imgs (square)/13.jpg', keywords: ['funny', 'man','move', 'star'] },
-    { id: 13, src: 'img/meme-imgs (square)/14.jpg', keywords: ['funny', 'man', 'move','matrix', 'star'] },
-    { id: 14, src: 'img/meme-imgs (square)/15.jpg', keywords: ['funny', 'man', 'move', 'lord'] },
-    { id: 15, src: 'img/meme-imgs (square)/16.jpg', keywords: ['funny', 'man', 'move', 'star'] },
-    { id: 16, src: 'img/meme-imgs (square)/17.jpg', keywords: ['funny', 'man', 'putin', 'president'] },
-    { id: 17, src: 'img/meme-imgs (square)/18.jpg', keywords: ['funny','toys', 'move']},
-]
 
-
+//MEME MODEL
 
 let gMeme = {
     selectedImg: gImgs[3].src,
@@ -45,7 +28,7 @@ let gMeme = {
     ]
 }
 
-// var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+//CHANGE FUNCTIONS
 
 function changeSelectedLine() {
     if (gMeme.lines.length === 1) return
@@ -76,12 +59,27 @@ function changeFontFamily(font) {
     gMeme.lines[gMeme.selectedLineIdx].fontFamily = font
 }
 
-function getFontFamily() {
-    return gMeme.lines[gMeme.selectedLineIdx].fontFamily
-}
-
 function changeLineText(text) {
     gMeme.lines[gMeme.selectedLineIdx].txt = text
+}
+
+function changeToPrevIdx() {
+    gMeme.selectedLineIdx--
+}
+
+function changeTextAlign(value) {
+    gMeme.lines[gMeme.selectedLineIdx].textAlign = value
+}
+
+function changeText(text) {
+    const selectedLineIdx = gMeme.selectedLineIdx
+    gMeme.lines[selectedLineIdx].txt = text
+}
+
+//GET FUNCTIONS
+
+function getFontFamily() {
+    return gMeme.lines[gMeme.selectedLineIdx].fontFamily
 }
 
 function getLineText() {
@@ -96,13 +94,25 @@ function getStrokeStyle() {
     return gMeme.lines[gMeme.selectedLineIdx].strokeStyle
 }
 
-function changeTextAlign(value) {
-    gMeme.lines[gMeme.selectedLineIdx].textAlign = value
+function getSelectedImg() {
+    return gMeme.selectedImg
 }
+
+function getSelectedIdx() {
+    return gMeme.selectedLineIdx
+}
+
+//REMOVE FUNCTIONS
 
 function removeText() {
     gMeme.lines[gMeme.selectedLineIdx].txt = ''
 }
+
+function removeLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+}
+
+//ADD FUNCTIONS
 
 function addLine() {
    const line =  {
@@ -118,14 +128,15 @@ function addLine() {
     gMeme.lines.push(line)
 }
 
-function removeLine() {
-    gMeme.lines.splice(gMeme.selectedLineIdx,1)
-}
-
-function changeToPrevIdx() {
-    gMeme.selectedLineIdx--
-}
+//SET FUNCTIONS
 
 function resetLineIdx() {
     gMeme.selectedLineIdx = 0
 }
+
+function setTextPos() {
+    const lineIdx = gMeme.selectedLineIdx 
+    gMeme.lines[lineIdx].textPosY = gElCanvas.height / 100 * 30 - gMeme.lines[lineIdx].size
+    gMeme.lines[lineIdx].borderPos = { x: 0, y: gElCanvas.height / 100 * 30 - gMeme.lines[0].size }
+}
+
