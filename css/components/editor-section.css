@@ -6,7 +6,6 @@
 }
 
 .controller-container {
-    /* border: solid; */
     border-radius: 25px;
     padding: 10px;
 }
@@ -14,7 +13,7 @@
 .controller-container button,
 .controller-container > input,
 .controller-container select {
-    border-radius: 2em;
+    border-radius: 0.5em;
     cursor: pointer;
     font-size: 1.3em;
 }
