@@ -1,0 +1,37 @@
+@media (max-width: 750px) {
+
+    .main-layout {
+        row-gap: 15px;
+        grid-template-rows: 70px;
+    }
+
+    .editor-section.main-layout {
+        display: block;
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 5px;
+        row-gap: 5px;
+    }
+
+    .canvas-container {
+        padding-inline: 20px;
+    }
+
+    .controller-container {
+        row-gap: 15px;
+    }
+
+    .editor-section {
+        padding-block: 10px;
+        max-width: 100%;
+    }
+
+    .controller-container button,
+    .controller-container>input,
+    .controller-container select {
+        height: 50px;
+    }
+}

@@ -1,0 +1,48 @@
+
+.editor-section {
+    box-shadow: 0 0 10px 5px #00000087;
+    padding-block: 20px;
+    background-image: linear-gradient(to right,gold,rgb(244, 229, 115));
+    max-width: 95vw;
+    justify-self: center;
+    max-height: 90vh;
+}
+
+.controller-container {
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.controller-container button,
+.controller-container > input,
+.controller-container select {
+    border-radius: 0.5em;
+    cursor: pointer;
+    font-size: 1.3em;
+}
+
+.controller-container button {
+    background-color: var(--clr-brand-secondary);
+    border: none;
+    box-shadow: 0px 0px 2px 1px #000000a8;
+}
+
+label {
+    cursor: pointer;
+}
+
+
+.text-input {
+    background-color: var(--clr-brand-secondary);
+    text-align: center;
+    font-size: 1.5rem;
+    border: solid 1px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+
+
