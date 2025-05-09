@@ -14,7 +14,8 @@ let gMeme = {
     selectedLineIdx: 0,
 
     lines: [
-        {
+        {   
+            id: getRandomId(),
             txt: '',
             size: 50,
             strokeStyle: '#ffffff',
@@ -116,6 +117,7 @@ function removeLine() {
 
 function addLine() {
    const line =  {
+        id: getRandomInt(),
         txt: '',
         size: 50,
         strokeStyle: '#ffffff',
