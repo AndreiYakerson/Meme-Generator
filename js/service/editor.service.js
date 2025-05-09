@@ -103,6 +103,12 @@ function getSelectedIdx() {
     return gMeme.selectedLineIdx
 }
 
+function getLineByPos(minY,maxY) {
+   const res =  gMeme.lines.forEach((line,idx) => {
+    if (line.borderPos.y ) return idx
+   })
+}
+
 //REMOVE FUNCTIONS
 
 function removeText() {

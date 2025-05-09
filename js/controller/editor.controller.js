@@ -177,7 +177,7 @@ function renderEditorSection(selectedImg) {
 
     elEditorSection.innerHTML = `
             <div class="canvas-container">
-                <canvas class="canvas" width="400" height="400"></canvas>
+                <canvas class="canvas" width="400" height="400" onclick="onCanvasClick(event)"></canvas>
             </div>
 
             <div class="controller-container">
@@ -266,4 +266,11 @@ function toggleUnderLineClass() {
     const elEditorLink = document.querySelector('.editor-nav')
     elGalleryLink.classList.toggle('underLine')
     elEditorLink.classList.toggle('underLine')
+}
+
+function onCanvasClick(ev) {
+    const {offsetX,offsetY} = ev
+
+    gMeme.lines.forEach(line)
+
 }
