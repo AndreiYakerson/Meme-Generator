@@ -14,7 +14,7 @@ let gMeme = {
     selectedLineIdx: 0,
 
     lines: [
-        {   
+        {
             id: getRandomId(),
             txt: '',
             size: 50,
@@ -25,14 +25,19 @@ let gMeme = {
             textPosY: 0,
             borderPos: {}
         },
-        
+
     ]
 }
 
 //CHANGE FUNCTIONS
 
-function changeSelectedLine() {
+function changeSelectedLine(idx = undefined) {
     if (gMeme.lines.length === 1) return
+
+    if (idx !== undefined) {
+        gMeme.selectedLineIdx = idx
+        return
+    }
 
     if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0
     else gMeme.selectedLineIdx++
@@ -103,10 +108,10 @@ function getSelectedIdx() {
     return gMeme.selectedLineIdx
 }
 
-function getLineByPos(minY,maxY) {
-   const res =  gMeme.lines.forEach((line,idx) => {
-    if (line.borderPos.y ) return idx
-   })
+function getLineByPos(minY, maxY) {
+    const res = gMeme.lines.forEach((line, idx) => {
+        if (line.borderPos.y) return idx
+    })
 }
 
 //REMOVE FUNCTIONS
@@ -116,13 +121,13 @@ function removeText() {
 }
 
 function removeLine() {
-    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
 }
 
 //ADD FUNCTIONS
 
 function addLine() {
-   const line =  {
+    const line = {
         id: getRandomInt(),
         txt: '',
         size: 50,
@@ -131,7 +136,7 @@ function addLine() {
         fontFamily: 'Impact',
         textAlign: 'center',
         textPosY: gMeme.lines[gMeme.selectedLineIdx].textPosY + 100,
-        borderPos: {x: 0, y: gMeme.lines[gMeme.selectedLineIdx].borderPos.y + 100}
+        borderPos: { x: 0, y: gMeme.lines[gMeme.selectedLineIdx].borderPos.y + 100 }
     }
     gMeme.lines.push(line)
 }
@@ -143,8 +148,17 @@ function resetLineIdx() {
 }
 
 function setTextPos() {
-    const lineIdx = gMeme.selectedLineIdx 
+    const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].textPosY = gElCanvas.height / 100 * 30 - gMeme.lines[lineIdx].size
     gMeme.lines[lineIdx].borderPos = { x: 0, y: gElCanvas.height / 100 * 30 - gMeme.lines[0].size }
 }
 
+function findLineIdxByPos(y) {
+    let res = 0
+    gMeme.lines.forEach((line, idx) => {
+        if (y <= +line.borderPos.y + line.size / 2 && y >= +line.borderPos.y - line.size) {
+            res = idx
+        }
+    })
+    return res
+}

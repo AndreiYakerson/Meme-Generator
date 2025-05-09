@@ -135,7 +135,7 @@ function onMoveDown() {
 
 function onAddLine() {
     addLine()
-    changeSelectedLine()
+    changeSelectedLine(gMeme.lines.length - 1)
     renderInputText()
     renderInputTextColor()
     renderInputTextStrokeStyle()
@@ -269,8 +269,12 @@ function toggleUnderLineClass() {
 }
 
 function onCanvasClick(ev) {
-    const {offsetX,offsetY} = ev
+    const { offsetY } = ev
 
-    gMeme.lines.forEach(line)
-
+    changeSelectedLine(findLineIdxByPos(offsetY))
+    renderInputText()
+    renderInputTextColor()
+    renderInputTextStrokeStyle()
+    renderSelectedFontFamily()
+    renderImageOnCanvas(getSelectedImg())
 }
